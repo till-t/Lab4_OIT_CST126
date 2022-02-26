@@ -3,3 +3,20 @@
 //CST 126 Lab 6
 
 
+Results from Bubble sort and adding sorted node.
+The node inserted held data value(3) which we can see was sorted into the
+proper location in the linked list.
+=======================================================================
+
+***Linked List a ***
+4 -> 2 -> 1 -> 6
+
+
+***Linked List a after sort***
+1 -> 2 -> 4 -> 6
+
+
+***Linked List a after adding sorted node***
+1 -> 2 -> 3 -> 4 -> 6
+
+
