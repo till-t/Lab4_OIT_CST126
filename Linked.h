@@ -178,6 +178,60 @@ void LList::deleteList()
     head = nullptr;
 }
 
+void LList::addSortedNode(int data)
+{
+    pushBack(data);
+    sort();
+}
+
+void LList::sort()
+{
+    int count = 0;
+    int i;
+    Node *curr = nullptr;
+    Node *trail = nullptr;
+    Node *temp = nullptr;
+
+    count = getCount();
+
+    for(i = 0; i<count; ++i)
+    {
+        curr = trail = head;
+
+        while (curr->next != NULL)
+        {
+            if (curr->data > curr->next->data) //compare data
+            {
+                temp = curr->next; //swap pointers for curr and curr->next
+                curr->next = curr->next->next;
+                temp->next = curr;
+
+                //now we need to setup pointers for trail and possibly head
+                if(curr == head) //this is the case of the first element swapping to preserve the head pointer
+                    head = trail = temp;
+                else //setup trail correctly
+                    trail->next = temp;
+                curr = temp; //update curr to be temp since the positions changed
+            }
+            //advance pointers
+            trail = curr;
+            curr = curr->next;
+        }
+    }
+}
+
+int LList::getCount()
+{
+    int count = 0;
+    Node *temp = head;
+    while (temp)
+    {
+        count += 1;
+        temp = temp->next;
+    }
+    return count;
+}
+
 void LList::printList()
 {
     Node* temp = head;
@@ -187,11 +241,14 @@ void LList::printList()
     }
     else
     {
+        std::cout << temp->data;
+        temp = temp->next;
         while(temp != nullptr)
         {
-            std::cout << temp->data << std::endl;
+            std::cout << " -> " << temp->data;
             temp = temp->next;
         }
+        std::cout << std::endl;
     }
 }
 

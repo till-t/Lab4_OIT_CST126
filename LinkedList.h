@@ -35,9 +35,13 @@ public:
     int getData();
     Node* getNext();
     void setData(int data);
+    void addSortedNode(int data);
     void deleteNode(int data);
+    void sort();
+    void checkSwap();
     void deleteList();
     void printList();
+    int getCount();
     friend std::ostream& operator <<(std::ostream& ostr, const LList& rhs);
 };
 
